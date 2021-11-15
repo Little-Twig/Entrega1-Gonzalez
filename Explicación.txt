@@ -1,0 +1,6 @@
+Este juego tiene como proposito ser un Topdown RPG donde el jugador peleará y tentativamente, se movera libremente en el mapa,
+donde podra entrar a diferentes dungeons, al final de cada uno, el jugador peleara contra un Jefe y obtendra una mejora o poder.
+En cuanto a mecanicas, jugador tendrá la habilidad de moverse unicamente en un plano 2D pero podrá ganar altura si es que el terreno
+lo permite, tendrá inicialmente un único ataque (golpe ligero) y despues de derrotar al primer enemigo, obtendrá un segundo (golpe pesado).
+Eventualmente, el jugador podra progresar por mas áreas del juego utilizando los movimientos que ira obteniendo conforme derrota Jefes
+hasta llegar a un Jefe final que, tentativamente, tendrá que ser derrotado utilizando la mayoria de las habilidades. 
