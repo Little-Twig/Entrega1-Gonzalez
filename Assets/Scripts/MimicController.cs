@@ -102,6 +102,7 @@ public class MimicController : MonoBehaviour
                 Destroy(gameObject);
             }
             deathTimer -= Time.deltaTime;
+            
         }
 
 
@@ -125,6 +126,7 @@ public class MimicController : MonoBehaviour
         {
             Die();
 
+
         }
         
     }
@@ -135,7 +137,9 @@ public class MimicController : MonoBehaviour
         animMimic.SetBool("isDead", true);
 
         isDead = true;
-        
+
+        GameManager.instance.AddExp();
+        Debug.Log(GameManager.getLevel());
 
     }
 
