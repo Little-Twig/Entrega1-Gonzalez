@@ -8,8 +8,9 @@ public class WatcherController : MonoBehaviour
     [SerializeField] private GameObject shootOrigin;
     [SerializeField] private int shotCD = 2;
     [SerializeField] private float shotTimer = 2f;
+    
 
-    [SerializeField] private GameObject proyectilePrefab;
+    [SerializeField] private GameObject[] proyectile;
 
     private bool canShoot = true;
     // Start is called before the first frame update
@@ -47,8 +48,9 @@ public class WatcherController : MonoBehaviour
             {
                 canShoot = false;
                 shotTimer = 0;
-                GameObject b = Instantiate(proyectilePrefab, shootOrigin.transform.position, proyectilePrefab.transform.rotation);
-                b.GetComponent<Rigidbody>().AddForce(shootOrigin.transform.TransformDirection(Vector3.forward) * 10f, ForceMode.Impulse);
+                int proyectileIndex = Random.Range(0, proyectile.Length);
+                GameObject b = Instantiate(proyectile[proyectileIndex], shootOrigin.transform);
+                
             }
             
         }

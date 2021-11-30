@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class MainCharController : MonoBehaviour
 {
     public CharacterController controller;
     private Animator anim;
+    public HealthBar healthbar;
 
     [SerializeField] Transform attackPoint;
     private float attackRange = .5f;
@@ -14,9 +16,12 @@ public class MainCharController : MonoBehaviour
     [SerializeField] float moveSpeed = 6f;
     [SerializeField] float walkSpeed;
     [SerializeField] float runSpeed;
-    [SerializeField] int attackDmg = 1;
+
+    
     [SerializeField] int maxHealth = 3;
     [SerializeField] int currentHealth;
+
+    [SerializeField] int attackDmg = 1;
     [SerializeField] private float attackRate = 2f;
     private float attackCD = 0;
 
@@ -29,10 +34,14 @@ public class MainCharController : MonoBehaviour
     private float smoothTurnTime = 0.1f;
     private float smoothTurnVelocity;
 
+
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
         anim = GetComponentInChildren<Animator>();
+        currentHealth = maxHealth;
+        healthbar.SetMaxHealth(maxHealth);
     }
     // Update is called once per frame
     void Update()
@@ -74,6 +83,12 @@ public class MainCharController : MonoBehaviour
         if(direction==Vector3.zero)
         {
             Idle();
+        }
+        if (currentHealth <= 0)
+        {
+            Die();
+            Debug.Log("Muerto");
+
         }
 
         direction *= moveSpeed;
@@ -133,20 +148,18 @@ public class MainCharController : MonoBehaviour
 
     public void TakeDamage(int Dmg)
     {
+        
         currentHealth -= Dmg;
+        healthbar.SetHealth(currentHealth);
         if (currentHealth > 0)
         {
             
 
             anim.SetTrigger("Hurt");
-
+            
             
         }
-        if (currentHealth <= 0)
-        {
-            Die();
-
-        }
+        
     }
 
     private void Die()
